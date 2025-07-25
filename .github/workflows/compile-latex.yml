@@ -57,8 +57,8 @@ jobs:
         run: git add .
       - name: commit changed files
         run: git commit -m git commit -m "Auto-build PDF from LaTeX" || echo "No changes to commit"
-      - name: fetch from master
-        run: git fetch origin master
-      - name: push code to master
-        run: git push origin HEAD:master
+#      - name: fetch from master
+#        run: git fetch origin master
+      - name: push changes
+        run: git push
 
