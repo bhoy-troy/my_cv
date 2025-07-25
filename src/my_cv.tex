@@ -35,12 +35,23 @@
 %\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
 %\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
 \usepackage{fontawesome}
+
+
+
+\immediate\write18{echo $FIRST_NAME > first_name.txt}
+\immediate\write18{echo $LAST_NAME > family_name.txt}
+\immediate\write18{echo $MOBILE_NUMBER > mobile.txt}
+\immediate\write18{echo $EMAIL > email.txt}
+\immediate\write18{echo $LINKED_IN > linked_in.txt}
+
 %----------------------------------------------------------------------------------------
 %	NAME AND CONTACT INFORMATION SECTION
 %----------------------------------------------------------------------------------------
 
-\firstname{James} % Your first name
-\familyname{Troy} % Your last name
+%\firstname{James} % Your first name
+%\familyname{Troy} % Your last name
+\firstname{\input{first_name.txt}}
+\familyname{\input{family_name.txt}}
 
 % All information in this block is optional, comment out any lines you don't need
 %\title{Curriculum Vitae}
@@ -51,12 +62,16 @@
 % \email{james@james-troy.com}
 
 % \address{}{Co Cork, Ireland}
-% \mobile{(+353) ** *******}
+ \mobile{\input{mobile.txt}}
 % %\phone{(000) 111 1112}
 % %\fax{(000) 111 1113}
-\email{james@james-troy.com}
+%\email{james@james-troy.com}
 
-\homepage{www.linkedin.com/in/troy-james}{Linkedin}
+\email{\input{email.txt}}
+
+
+%\homepage{www.linkedin.com/in/troy-james}{Linkedin}
+\homepage{\input{linked_in.txt}}{Linkedin}
 % \extrainfo {\faLinkedin   www.linkedin.com/in/troy-james}{www.linkedin.com/in/troy-james}
 % The first argument is the url for the clickable link, the second argument is the url displayed in the template - this allows special characters to be displayed such as the tilde in this example
 % \extrainfo{\href{https://github.com/sinashish}{Github: sinashish}}
