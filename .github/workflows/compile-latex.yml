@@ -16,8 +16,19 @@ jobs:
 
 
 
-      - name: Checkout Repository
+#      - name: Checkout Repository
+#        uses: actions/checkout@v4
+#        with:
+#          repository: bhoy-troy/my_cv
+#          ssh-key: ${{ secrets.GIT_SSH_PRIVATE_KEY }}
+
+      - name: Checkout via SSH
         uses: actions/checkout@v4
+        with:
+            ssh-key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+
+
+
 
       - name: Compile LaTeX Document
         uses: dante-ev/latex-action@latest
