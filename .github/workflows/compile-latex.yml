@@ -24,8 +24,7 @@ jobs:
 
       - name: Checkout via SSH
         uses: actions/checkout@v4
-        with:
-            ssh-key: ${{ secrets.GIT_PUB_KEY }}
+
 
 
 
@@ -45,31 +44,33 @@ jobs:
 
 
 
-#      - name: Commit and push PDF
-#        run: |
-#          git config --global user.name "github-actions[bot]"
-#          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-#          git add src/my_cv.pdf
-#          git commit -m "Auto-build PDF from LaTeX" || echo "No changes to commit"
-#          git push
+      - name: Commit PDF
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add my_cv.pdf
+          git commit -m "Auto-compiled CV" || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
+      #
+
+#      - name: Create Release
 #
-
-      - name: Create Release
-
-        uses: actions/checkout@v4
-      - name: Run check of pwd
-        run: pwd
-      - name: Run check of what's in pwd
-        run: ls
-
-      - name: check for changes
-        run: git status
-      - name: stage changed files
-        run: git add .
-      - name: commit changed files
-        run: git commit -m git commit -m "Auto-build PDF from LaTeX" || echo "No changes to commit"
-#      - name: fetch from master
-#        run: git fetch origin master
-      - name: push changes
-        run: git push
+#        uses: actions/checkout@v4
+#      - name: Run check of pwd
+#        run: pwd
+#      - name: Run check of what's in pwd
+#        run: ls
+#
+#      - name: check for changes
+#        run: git status
+#      - name: stage changed files
+#        run: git add .
+#      - name: commit changed files
+#        run: git commit -m git commit -m "Auto-build PDF from LaTeX" || echo "No changes to commit"
+##      - name: fetch from master
+##        run: git fetch origin master
+#      - name: push changes
+#        run: git push
 
