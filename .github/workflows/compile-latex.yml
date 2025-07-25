@@ -1,0 +1,43 @@
+
+
+name: Build LaTeX PDF
+
+on:
+  push:
+    paths:
+      - 'src/**/*.tex'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX Document
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: my_cv.tex
+          working_directory: src
+
+
+      - name: Save PDF as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cv.pdf
+          path: cv.pdf
+
+
+
+#      - name: Commit and push PDF
+#        run: |
+#          git config --global user.name "github-actions[bot]"
+#          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+#          git add src/cv.pdf
+#          git commit -m "Auto-build PDF from LaTeX" || echo "No changes to commit"
+#          git push
