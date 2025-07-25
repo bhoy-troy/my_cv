@@ -34,10 +34,32 @@ jobs:
 
 
 
-      - name: Commit and push PDF
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/my_cv.pdf
-          git commit -m "Auto-build PDF from LaTeX" || echo "No changes to commit"
-          git push
+#      - name: Commit and push PDF
+#        run: |
+#          git config --global user.name "github-actions[bot]"
+#          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+#          git add src/my_cv.pdf
+#          git commit -m "Auto-build PDF from LaTeX" || echo "No changes to commit"
+#          git push
+#
+
+      - name: Create Release
+
+        uses: actions/checkout@v4
+      - name: Run check of pwd
+        run: pwd
+      - name: Run check of what's in pwd
+        run: ls
+      - name: switching from HTTPS to SSH
+        run: git remote set-url origin ${{ secrets.ssh }}
+      - name: check for changes
+        run: git status
+      - name: stage changed files
+        run: git add .
+      - name: commit changed files
+        run: git commit -m git commit -m "Auto-build PDF from LaTeX" || echo "No changes to commit"
+      - name: fetch from master
+        run: git fetch origin master
+      - name: push code to master
+        run: git push origin HEAD:master
+
