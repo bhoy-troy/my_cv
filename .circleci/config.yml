@@ -28,13 +28,13 @@ jobs:
           name: Compile LaTeX CV
           command: |
             cd src
-            latexmk -pdf cv.tex
+            latexmk -pdf my_cv.tex
       - run:
           name: Push built PDF to repo
           command: |
             git config --global user.name "circleci-bot"
             git config --global user.email "ci@example.com"
-            git add src/cv.pdf
+            git add src/my_cv.pdf
             git commit -m "Auto-build CV PDF [ci skip]" || echo "No changes"
             git push origin HEAD
 
