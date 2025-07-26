@@ -38,11 +38,26 @@
 
 
 
-\immediate\write18{echo $FIRST_NAME > first_name.txt}
-\immediate\write18{echo $LAST_NAME > family_name.txt}
-\immediate\write18{echo $MOBILE_NUMBER > mobile.txt}
-\immediate\write18{echo $EMAIL > email.txt}
-\immediate\write18{echo $LINKED_IN > linked_in.txt}
+\newcommand{\getenv}[2][]{%
+    \immediate\write18{echo -n $#2 > #2.txt}%
+    \IfFileExists{#2.txt}{%
+        \newcommand#1{\input{#2.txt}}%
+    }{%
+        \newcommand#1{N/A}%
+    }%
+}
+
+%\immediate\write18{echo $MOBILE_NUMBER > /tmp/mobile.txt}
+%\immediate\write18{echo $EMAIL > /tmp/email.txt}
+%\immediate\write18{echo $LINKED_IN > /tmp/linkedin.txt}
+%\immediate\write18{echo $FIRST_NAME > /tmp/first_name.txt}
+%\immediate\write18{echo $LAST_NAME > /tmp/family_name.txt}
+
+\getenv[\MOBILE]{MOBILE}
+\getenv[\EMAIL]{EMAIL}
+\getenv[\LINKEDIN]{LINKEDIN}
+\getenv[\FIRSTNAME]{FIRSTNAME}
+\getenv[\LASTNAME]{LASTNAME}
 
 %----------------------------------------------------------------------------------------
 %	NAME AND CONTACT INFORMATION SECTION
@@ -50,28 +65,28 @@
 
 %\firstname{James} % Your first name
 %\familyname{Troy} % Your last name
-\firstname{\input{first_name.txt}}
-\familyname{\input{family_name.txt}}
+\firstname{\FIRSTNAME}
+\familyname{\LASTNAME}
 
 % All information in this block is optional, comment out any lines you don't need
 %\title{Curriculum Vitae}
 % \address{Castletownroche}{Co Cork, Ireland}
-% \mobile{(+353) 86 8273484}
+% \mobile{(+353) 83 4565381}
 % %\phone{(000) 111 1112}
 % %\fax{(000) 111 1113}
 % \email{james@james-troy.com}
 
 % \address{}{Co Cork, Ireland}
- \mobile{\input{mobile.txt}}
+ \mobile{\MOBILE}
 % %\phone{(000) 111 1112}
 % %\fax{(000) 111 1113}
 %\email{james@james-troy.com}
 
-\email{\input{email.txt}}
+\email{\EMAIL}
 
 
 %\homepage{www.linkedin.com/in/troy-james}{Linkedin}
-\homepage{\input{linked_in.txt}}{Linkedin}
+\homepage{\LINKEDIN}{Linkedin}
 % \extrainfo {\faLinkedin   www.linkedin.com/in/troy-james}{www.linkedin.com/in/troy-james}
 % The first argument is the url for the clickable link, the second argument is the url displayed in the template - this allows special characters to be displayed such as the tilde in this example
 % \extrainfo{\href{https://github.com/sinashish}{Github: sinashish}}

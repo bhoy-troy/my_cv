@@ -304,3 +304,4 @@ TSWLatexianTemp*
 .env
 .idea
 
+src/*.txt

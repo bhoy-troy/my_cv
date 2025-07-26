@@ -23,6 +23,7 @@ jobs:
         with:
           root_file: my_cv.tex
           working_directory: src
+          args: "--shell-escape"
 
 
       - name: Save PDF as Artifact
@@ -35,6 +36,7 @@ jobs:
         env:
             TOKEN: ${{ secrets.ACTIONS_TOKEN }}
         run: |
+            env
             git config --global user.name "CV-bot"
             git config --global user.email "bot@example.com"
             git remote set-url origin https://x-access-token:${TOKEN}@github.com/${{ github.repository }}
