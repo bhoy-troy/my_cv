@@ -23,8 +23,13 @@ jobs:
         with:
           root_file: my_cv.tex
           working_directory: src
-          args: "--shell-escape"
-
+          args: "--shell-escape -f"
+        env:
+          EMAIL: ${{ vars.EMAIL }}
+          FIRSTNAME: ${{ vars.FIRSTNAME }}
+          LASTNAME: ${{ vars.LASTNAME }}
+          MOBILE: ${{ vars.LASTNAME }}
+          LINKEDIN: ${{ vars.LINKEDIN }}
 
       - name: Save PDF as Artifact
         uses: actions/upload-artifact@v4
