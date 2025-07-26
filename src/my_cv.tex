@@ -32,20 +32,18 @@
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
 \usepackage[hyperref]
 \usepackage[scale=0.9]{geometry} % Reduce document margins
-%\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
-%\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
 \usepackage{fontawesome}
 
 
 
-\newcommand{\getenv}[2][]{%
-    \immediate\write18{echo -n $#2 > #2.txt}%
-    \IfFileExists{#2.txt}{%
-        \newcommand#1{\input{#2.txt}}%
-    }{%
-        \newcommand#1{N/A}%
-    }%
-}
+%\newcommand{\getenv}[2][]{%
+%    \immediate\write18{echo -n $#2 > #2.txt}%
+%    \IfFileExists{#2.txt}{%
+%        \newcommand#1{\input{#2.txt}}%
+%    }{%
+%        \newcommand#1{N/A}%
+%    }%
+%}
 
 %\immediate\write18{echo $MOBILE_NUMBER > /tmp/mobile.txt}
 %\immediate\write18{echo $EMAIL > /tmp/email.txt}
@@ -53,40 +51,40 @@
 %\immediate\write18{echo $FIRST_NAME > /tmp/first_name.txt}
 %\immediate\write18{echo $LAST_NAME > /tmp/family_name.txt}
 
-\getenv[\MOBILE]{MOBILE}
-\getenv[\EMAIL]{EMAIL}
-\getenv[\LINKEDIN]{LINKEDIN}
-\getenv[\FIRSTNAME]{FIRSTNAME}
-\getenv[\LASTNAME]{LASTNAME}
+%\getenv[\MOBILE]{MOBILE}
+%\getenv[\EMAIL]{EMAIL}
+%\getenv[\LINKEDIN]{LINKEDIN}
+%\getenv[\FIRSTNAME]{FIRSTNAME}
+%\getenv[\LASTNAME]{LASTNAME}
 
 %----------------------------------------------------------------------------------------
 %	NAME AND CONTACT INFORMATION SECTION
 %----------------------------------------------------------------------------------------
 
-%\firstname{James} % Your first name
-%\familyname{Troy} % Your last name
-\firstname{\FIRSTNAME}
-\familyname{\LASTNAME}
+\firstname{James} % Your first name
+\familyname{Troy} % Your last name
+%\firstname{\FIRSTNAME}
+%\familyname{\LASTNAME}
 
 % All information in this block is optional, comment out any lines you don't need
 %\title{Curriculum Vitae}
 % \address{Castletownroche}{Co Cork, Ireland}
-% \mobile{(+353) 83 4565381}
+ \mobile{(+353) 83 4565381}
 % %\phone{(000) 111 1112}
 % %\fax{(000) 111 1113}
 % \email{james@james-troy.com}
 
 % \address{}{Co Cork, Ireland}
- \mobile{\MOBILE}
+% \mobile{\MOBILE}
 % %\phone{(000) 111 1112}
 % %\fax{(000) 111 1113}
-%\email{james@james-troy.com}
+\email{james@james-troy.com}
 
-\email{\EMAIL}
+%\email{\EMAIL}
 
 
-%\homepage{www.linkedin.com/in/troy-james}{Linkedin}
-\homepage{\LINKEDIN}{Linkedin}
+\homepage{www.linkedin.com/in/troy-james}{Linkedin}
+%\homepage{\LINKEDIN}{Linkedin}
 % \extrainfo {\faLinkedin   www.linkedin.com/in/troy-james}{www.linkedin.com/in/troy-james}
 % The first argument is the url for the clickable link, the second argument is the url displayed in the template - this allows special characters to be displayed such as the tilde in this example
 % \extrainfo{\href{https://github.com/sinashish}{Github: sinashish}}
