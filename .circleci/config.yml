@@ -28,7 +28,7 @@ jobs:
           name: Compile LaTeX CV
           command: |
             cd src
-            latexmk -pdf my_cv.tex
+            latexmk -pdf  -f my_cv.tex
       - run:
           name: Push built PDF to repo
           command: |
